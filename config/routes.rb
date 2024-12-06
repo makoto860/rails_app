@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "users/account"
   get "users/profile"
-  get 'homes/top'
+  get 'homes/index'
   get 'homes/tokyo'
   get 'homes/nagoya'
   get 'homes/osaka'
@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "homes#top"
+  root "homes#index"
 end
