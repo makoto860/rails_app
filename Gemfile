@@ -65,3 +65,4 @@ group :production do
   # MySQL
   gem 'mysql2'
 end
+git remote add origin https://git.heroku.com/rails-complite.git
