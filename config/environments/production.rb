@@ -24,6 +24,7 @@ Rails.application.configure do
   # config.public_file_server.enabled = false
 
   # Compress CSS using a preprocessor.
+  config.assets.js_compressor = :terser
   # config.assets.css_compressor = :sass
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
@@ -91,6 +92,25 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  Rails.application.configure do
+    # default url
+    config.action_mailer.default_url_options = {
+      protocol: 'https',
+      host:ENV["APP_ROOT_URL"]
+    }
+    # mail setting
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :user_name => ENV["GMAIL_ADDRESS"],
+      :password => ENV["GMAIL_2FACTOR_PASSWORD"],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  end
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
